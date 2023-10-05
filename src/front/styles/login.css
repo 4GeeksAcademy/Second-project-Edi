@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#loginCard{
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.half-content{
+    height: 600px;
+    width: 100%;
+    border-radius: 40px;
+    background-color: antiquewhite;
+}
+
+input{
+    height: 40px;
+    width: 220px;
+    border: none;
+    border-left: 1px solid black;
+}
+a{
+    text-decoration: none;
+}
+#createAcount{
+    cursor: pointer !important;
+}
+.fa-user,.fa-key,.fa-at,.fa-location-pin{
+    font-size: 22px;
+    margin-left: 8px;
+}
+.input-board{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#loginCard{
+    border-radius: 40px;
+}
+#loginSubmit{
+    margin-left: 220px;
+}
+.fa-arrow-right{
+    cursor: pointer;
+}
+.general-container{
+    height:700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 470px){
+
+.general-container{
+    max-width:100%;
+}
+}

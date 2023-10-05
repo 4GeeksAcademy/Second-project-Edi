@@ -1,0 +1,56 @@
+#imageMainproduct{
+    height: 600px;
+}
+#imageMainproduct img{
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+}
+.fa-solid {
+    font-size: 30px;
+}
+#carrito,#comprar{
+    height: 50px;
+    width: 100%;
+
+}
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    margin-bottom: 10px;
+  }
+  
+.progress {
+    border-radius: 0px !important;
+    height: 100%;
+    background: linear-gradient(325deg, #ff3484 0, #f1e04d 100%);
+    transition: width 0.3s ease-in-out;
+  }
+.fa-circle.active {
+    transform: scale(1.3); 
+    transition: transform 0.3s ease-in-out;
+}
+.selectecColor{
+    font-size: 15px;
+}
+.fa-gift, .fa-arrow-left, .fa-lock {
+    font-size: 20px;
+}
+.app {
+    display: flex;
+}
+.sidebar {
+    width: 550px; /* Ancho del Sidebar */
+    background-color: black;
+    border-left: 1px solid #ccc;
+    padding: 20px;
+    position: fixed;
+    right: 0; /* Posición a la derecha */
+    top: 0;
+    height: 100%;
+    overflow-y: auto; /* Agrega un desplazamiento vertical si es necesario */
+    z-index: 100; /* Asegura que esté en la parte superior de otros elementos */
+  }
+  

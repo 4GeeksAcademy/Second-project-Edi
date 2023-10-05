@@ -1,7 +1,24 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+#homeWallpaper{
+    width: 100vw;
+    height: 100vh !important;
+}
+#homeWallpaper img{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+.banner{
+    position: fixed;
+    bottom: 40px;
+    right: 0px;
+    width: 90px;
+    text-align: center;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 10px;
+    background-color: #1CB43D;
+}
+.features{
+    border-right: 1px solid black;
+}

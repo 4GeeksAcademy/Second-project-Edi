@@ -1,0 +1,30 @@
+.navbar {
+    background-color: rgba(rgba(255, 0, 0, 0.5));
+    width: 100%; 
+    z-index: 90; 
+    position: absolute;  
+#navbarHome{
+    height: 90px;
+    }
+}
+.navbar :hover, .navbar :hover a{
+    background-color: white;
+    color: black;
+}
+.navbar a{
+    color: white;
+}
+.navbar a:hover{
+    color: gray;
+}
+@media (max-width: 470px){
+    .navbar-toggler{
+        border: none;
+        color: white;
+    }
+    .nabvar{
+        background-color: rgba(rgba(255, 0, 0, 0.5));
+
+    }
+    
+}

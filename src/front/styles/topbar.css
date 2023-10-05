@@ -1,0 +1,36 @@
+#announceBoard{
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+#announceBoard p{
+    font-family: Neuzeit Office, sans-serif;
+    font-size: 14px;
+}
+.fa-brands{
+    color: white;
+    font-size: 24px !important;
+}
+@keyframes moveIcons {
+    0% {
+        transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(55%);
+    }
+}
+
+.iconsAnuncio {
+    animation: moveIcons 10s linear infinite;
+}
+
+
+@media (max-width: 470px){
+    #iconsHome{
+        justify-content: center !important;
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }
+}
