@@ -3,7 +3,7 @@ import "../../styles/footer.css"
 
 export const Footer = () => (
 	<footer className="footer bg-light p-0 m-0 mt-5">
-		<div className="row" id="footerBoard">
+		<div className="row m-0 p-0" id="footerBoard">
 			<div className="col-md-3">
 				<h3>Links </h3>
 				<div className="d-flex flex-column">

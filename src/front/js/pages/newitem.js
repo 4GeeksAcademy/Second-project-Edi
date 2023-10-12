@@ -159,13 +159,19 @@ const NewItem = () =>{
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
-                                <button className="dropdown-item" onClick={() => handleCategorySelect("Toys")}>Toys</button>
+                                <button className="dropdown-item" onClick={() => handleCategorySelect("Canapes")}>Canapes</button>
                             </li>
                             <li>
-                                <button className="dropdown-item" onClick={() => handleCategorySelect("Furniture")} > Furniture </button>
+                                <button className="dropdown-item" onClick={() => handleCategorySelect("Cabezero")} >Cabezero </button>
                             </li>
                             <li>
-                                <button className="dropdown-item" onClick={() => handleCategorySelect("Clothes")} > Clothes </button>
+                                <button className="dropdown-item" onClick={() => handleCategorySelect("Colchon")} > Colchon </button>
+                            </li>
+                            <li>
+                                <button className="dropdown-item" onClick={() => handleCategorySelect("Sofa")} > Sofa </button>
+                            </li>
+                            <li>
+                                <button className="dropdown-item" onClick={() => handleCategorySelect("Mesilla")} > Mesilla </button>
                             </li>
                         </ul>
                     </div>

@@ -22,3 +22,22 @@
 .features{
     border-right: 1px solid black;
 }
+#canapeImage img{
+    z-index: 200;
+   
+    transform: translateX(-25%);
+    border-radius: 0px;
+}
+
+#middleImage img{
+    z-index: 200;
+    transform: translate(-60%, -60%);
+}
+.image img, #middleImage img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+#terceraImg{
+    margin-left: 80px;
+}

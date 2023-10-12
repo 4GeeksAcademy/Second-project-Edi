@@ -13,7 +13,7 @@ const CarouselHome = () =>{
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="https://cdn.pixabay.com/photo/2016/11/30/12/29/bicycle-1872682_1280.jpg" class="d-block w-100" alt="..."/>
+      <img src="    https://cdn.pixabay.com/photo/2017/09/09/18/25/living-room-2732939_1280.jpg" class="d-block w-100" alt="..."/>
       <div class="carousel-caption">
         <div className="d-flex flex-row justify-content-around  h-50" id="slogan">
           <div className="smallSlogan">
@@ -27,7 +27,7 @@ const CarouselHome = () =>{
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="https://cdn.pixabay.com/photo/2017/09/09/18/25/living-room-2732939_1280.jpg" class="d-block w-100" alt="..."/>
+      <img src="https://cdn.pixabay.com/photo/2019/09/11/04/43/interior-design-4467768_1280.jpg" class="d-block w-100" alt="..."/>
       <div class="carousel-caption">
         <div className="d-flex flex-row justify-content-around  h-50" id="slogan">
           <div className="smallSlogan">
@@ -41,7 +41,7 @@ const CarouselHome = () =>{
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://cdn.pixabay.com/photo/2017/07/31/11/44/glass-2557577_1280.jpg" class="d-block w-100" alt="..."/>
+      <img src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg" class="d-block w-100" alt="..."/>
       <div class="carousel-caption">
         <div className="d-flex flex-row justify-content-around  h-50" id="slogan">
           <div className="smallSlogan">

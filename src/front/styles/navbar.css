@@ -3,20 +3,44 @@
     width: 100%; 
     z-index: 90; 
     position: absolute;  
+}
 #navbarHome{
     height: 90px;
-    }
 }
-.navbar :hover, .navbar :hover a{
-    background-color: white;
+#navbarHome a {
+    color:white
+}
+#navbarHome:hover  .nav-link{
     color: black;
 }
-.navbar a{
-    color: white;
+#navbarHome:hover {
+    background-color: white;
 }
-.navbar a:hover{
-    color: gray;
+.nav-item {
+    margin-right: 5px;
+} 
+.nav-link {
+    position: relative;
 }
+.dropdown-item {
+    color: black !important
+}
+  
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: black;
+    transition: width 0.3s ease; 
+  }
+  
+.nav-link:hover::before {
+    width: 100%;
+  }
+
 @media (max-width: 470px){
     .navbar-toggler{
         border: none;

@@ -4,7 +4,6 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import Login from "./pages/login"; 
 import NewItem from "./pages/newitem"
@@ -36,7 +35,7 @@ const Layout = () => {
                         <Route element={<NewItem />} path="/new-item" />
                         <Route element={<ForgotPassword />} path="/forgot-password" />
 
-                        <Route element={<SingleItem />} path="/item/:theid" />
+                        <Route element={<SingleItem/>} path="/item"/>
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
