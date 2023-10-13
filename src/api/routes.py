@@ -89,7 +89,7 @@ def upload_item():
         }
         return jsonify(response_body),400
     
-    required_fields = ["title", "description", "type", "publishing_date", "image"]
+    required_fields = ["title", "description", "publishing_date", "image", "type"]
     for field in required_fields:
         if field not in data:
             response_body = {
@@ -128,8 +128,10 @@ def get_single_item(id):
     item = Item.query.get(id)
     return jsonify(item.serialize()),200
 
-@api.route('/items',methods=['GET'])
+@api.route('/items', methods=['GET'])
 def get_all_items():
-    all_items= Item.query.all()
-    all_items= list(map(lambda x: x.serialize(),all_items))
-    return jsonify(all_items),200
+    type = request.args.get("type")
+    all_items = Item.query.filter_by(type=type)
+    all_items = list(map(lambda x: x.serialize(), all_items))
+
+    return jsonify(all_items), 200

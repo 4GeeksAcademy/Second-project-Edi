@@ -5,10 +5,22 @@
     box-shadow: 0px 3px 15px -7px rgba(0, 0, 0, 0.5);
 
 }
-#titleCard{
-    transform: translateY(-75%);
-    background-color: rgb(255, 234, 209);
-    height: 90px;
+#titleCard {
+    position: relative;
+    transform: translateY(-95%);
+    background-color: white;
+    height: 40px;
+}
+
+#titleCard::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    width: 10px; /* Ajusta el ancho según sea necesario */
+    height: 10px; /* Ajusta la altura según sea necesario */
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
 }
 #singleItemCardImage{
     height: 280px;
@@ -47,3 +59,6 @@
 .fa-arrow-right{
     font-size: 25px;
 }
+/* #singleItemCard p , #singleItemCard h3{
+    font-family: 'Playfair Display', serif;;
+} */

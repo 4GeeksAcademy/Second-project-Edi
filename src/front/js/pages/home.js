@@ -6,8 +6,8 @@ import {Elements, CardElement,useStripe, useElements} from '@stripe/react-stripe
 import {loadStripe} from '@stripe/stripe-js';
 import CarouselHome from "../component/carouselhome";
 import HomeCard from "../component/homecard";
-import CategoryCard from "../component/categorycard";
-
+import DormitorioCard from "../component/dormitoriocard";
+import SalonCard from "../component/saloncard";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -118,15 +118,15 @@ export const Home = () => {
 			<div className="row mt-5">
 				<div className="col-md-4 text-center features">
 					<h3>Envios gratis</h3>
-					<p>En compras superiores a 50$</p>
+					<p>En compras superiores a 150€</p>
 				</div>
 				<div className="col-md-4  text-center features">
 					<h3>Atención 24/7</h3>
-					<p>Equipo de atención disponible</p>
+					<p>Nuestro equipo de atención al cliente está disponible las 24 horas del día</p>
 				</div>
 				<div className="col-md-4  text-center ">
-					<h3>Envios gratis</h3>
-					<p>En compras superiores a 50$</p>
+					<h3>Calidad garantizada</h3>
+					<p>Diseñada para superar tus expectativas y garantizar tu total satisfacción en cada compra</p>
 				</div>
 			</div>
 
@@ -134,10 +134,10 @@ export const Home = () => {
 					{showItems()}			
 			</div> */}
 			<div className="container-fluid">
-					<CategoryCard title="Dormitorio"/>
+					<DormitorioCard title="Dormitorio"/>
 			</div>
 			<div className="container-fluid">
-					<CategoryCard title="Salon"/>
+					<SalonCard title="Salon"/>
 			</div>
 			<div className="row mt-5">
 				<div className="col-md-6 d-flex flex-column align-items-left justify-content-center p-5" style={{height:600, backgroundColor:"rgb(247, 243, 234)"}}>

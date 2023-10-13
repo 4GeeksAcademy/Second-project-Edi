@@ -2,29 +2,21 @@ import React,{useState,useEffect} from "react";
 import "../../styles/mainproducts.css"
 import Carrito from "../component/carrito";
 import ShareComponent from "../component/sharecomponent";
+import { useParams } from "react-router-dom";
 
 const SingleItem = (props) =>{
-    const [totalBatidorasVendidas, setTotalBatidorasVendidas] = useState(20);
-    const [selectedColor, setSelectedColor] = useState("")
+    const params = useParams()
     const [cantidad,setCantidad] = useState(0)
-
-    // const comprarBatidora = () => {
-    //     setTotalBatidorasVendidas(totalBatidorasVendidas - 1);
-    // };
-        
-    // const progreso = (totalBatidorasVendidas / 20) * 100;
-            // const [activeCircle, setActiveCircle] = useState(null);
-
-
+    const [item,setItem] = useState("") 
     const [showCart, setShowCart] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
   
     const toggleCart = () => {
       setShowCart(!showCart);
     };
-  
+    const [cartItems, setCartItems] = useState([]); 
+
     const addToCart = (product) => {
-      setCartItems([...cartItems, product]);
+      setCartItems([...cartItems, product])
     };
 
     const sumarCantidad = () =>{
@@ -36,19 +28,37 @@ const SingleItem = (props) =>{
           }
     }
 
+    const get_single_item = () =>{
+        fetch(process.env.BACKEND_URL + 'api/single-item/' + params.id, { 
+            method: "GET", 
+            headers: { 
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((result) => {  
+            setItem(result)
+        })
+        .catch((err) => {
+        console.log(err);
+        })
+        
+    }
+
+    useEffect(()=>{
+        get_single_item()
+    },[])
+
     return(
         <div className="container-fluid mt-5 ">
         <div className="row mt-5 mx-2">
             <div className="col-md-8" id="imageMainproduct">
-                <img  src="https://topmueble.com/17755/canape-melamina-color-roble.jpg" alt=""/>
+                <img  src={item.image} alt=""/>
             </div>
             <div className="col-md-4">
                 <div className="productInfo ">
-                    <h2 className="py-5">Canapé Abatible CB100</h2>
-                    <p className="text-left">Descubre el Canapé Abatible CB100
-                        ¿Buscas un canapé versátil, con estilo y excelente capacidad de almacenamiento?
-                        En Bedland, tenemos la solución perfecta: ¡el innovador Canapé Abatible CB100!
-                        Este canapé es la última incorporación a nuestra colección, ofreciendo un diseño moderno y funcional que transformará tu dormitorio en un espacio más elegante y organizado. No comprometas el estilo por la funcionalidad: el CB100 lo tiene todo.</p>
+                    <h2 className="py-5">{item.title}</h2>
+                    <p className="text-left">{item.description}</p>
                     <p className="mt-4"><i class="fa-solid fa-car me-3"></i>Entrega a domicilio</p>
                     <p><i class="fa-solid fa-arrow-left me-3"></i> 30 dias para devolución</p>
                     <p><i class="fa-solid fa-lock me-3"></i> 1 año de garantía</p>
@@ -60,10 +70,6 @@ const SingleItem = (props) =>{
                         <option value="3">Cama de </option>
                     </select>
                 
-                        {/* <div className="progress-bar mt-3">
-                            <div className="progress" style={{ width: `${progreso}%` }}></div>
-                        </div>
-                 */}
                     <section className="d-flex flex-row justify-content-between">
                         <div className="quantityBoard d-flex flex-row align-items-center mt-3">
                             <input id="quantity" value={cantidad} /> 
@@ -72,21 +78,21 @@ const SingleItem = (props) =>{
                                 <button className="btnCantidad"><i class="fa-solid fa-angle-down" onClick={restarCantidad}></i></button>
                             </div>
                         </div>
-                        <p className="mt-4"> € <span style={{fontSize:45}}>829</span><sup class="price__suffix">,00</sup></p>
+                        <p className="mt-4"> € <span style={{fontSize:45}}>{item.price}</span><sup class="price__suffix">,00</sup></p>
                     </section>
                   
                   
 
                  
                     <div className="app">                      
-                        {showCart && (
-                            <Carrito cartItems={cartItems} />
-                        )}
-                    </div>
-                    <button id="carrito" className="my-3" onClick={() =>{ 
-                        addToCart('Producto 1')
-                        toggleCart()
-                        }}>Añadir al carrito</button>
+                {showCart && (
+                        <Carrito cartItems={cartItems} /> 
+                    )}
+                </div>
+                <button id="carrito" className="my-3" onClick={() =>{ 
+                    addToCart(item);
+                    toggleCart();
+                }}>Añadir al carrito</button>
                     <button  id="comprar">Comprar</button>
                 </div>    
             </div>

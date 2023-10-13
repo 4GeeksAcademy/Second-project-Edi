@@ -25,12 +25,12 @@ export const Navbar = () => {
 						<a className="nav-link active" aria-current="page" href="/">Home</a>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="/userpage">User Page</a>
+						<a className="nav-link" href="/userpage">Mi cuenta</a>
 					</li>
-					<li className="nav-item">
+					{/* <li className="nav-item">
 						<a className="nav-link" href="/new-item">Upload Item</a>
-					</li>
-					<Dropdown name ={"Dormitorio"} item1="Canapes" item2="Mesilla de noche" item3="Cabezeros"/>
+					</li> */}
+					<Dropdown name ={"Dormitorio"} item1="Canapes" item2="Mesilla de noche" item3="Cabezeros" />
 					<Dropdown name ={"Salon"} item1="Sofa" item2="Armario" item3="Mesas"/>
 				</ul>
 				<form className="d-flex">

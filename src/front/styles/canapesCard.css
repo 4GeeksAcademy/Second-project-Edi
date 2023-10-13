@@ -1,0 +1,30 @@
+#canapeCard{
+    margin: 0;
+    box-shadow: 0px 3px 15px -7px rgba(0, 0, 0, 0.5);
+    padding: 0;
+}
+.canapeCardImage{
+    height: 250px;
+    width: auto;
+}
+.canapeCardImage img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#canapeTitle{
+    transform: translateY(-25%);
+    background-color: white;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+.btnBoardSingle{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
