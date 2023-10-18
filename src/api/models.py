@@ -63,7 +63,7 @@ class Item(db.Model):
        return {
             "id": self.id,
             "title": self.title,
-            "category": self.category.name if self.category else None,
+            "category": self.category.value if self.category else None,
             "description": self.description,
             "location":self.location,
             "publishing_date": self.publishing_date,
