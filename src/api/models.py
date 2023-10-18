@@ -4,9 +4,6 @@ import enum
 from sqlalchemy import Enum,ForeignKey,Float
 from datetime import datetime
 
-
-
-
 class myEnum(enum.Enum):
     colchones = "colchones"
     canapes = "canapes"
@@ -44,7 +41,7 @@ class Item(db.Model):
     __tablename__ = "item"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
-    type = db.Column(Enum(myEnum))  
+    # type = db.Column(Enum(myEnum))  
     description = db.Column(db.String(1000), nullable=False)
     location = db.Column(db.String(250), nullable=True)
     publishing_date = db.Column(db.String(10), nullable=False)
@@ -58,13 +55,13 @@ class Item(db.Model):
     firmeza = db.Column(db.Integer, nullable=True, default=0)
 
     def __repr__(self):
-        return f'<Reviews {self.id}>'
+        return f'<item {self.id}>'
       
     def serialize(self):
        return {
             "id": self.id,
             "title": self.title,
-            "type": self.type.name if self.type else None,      
+            # "type": self.type.name if self.type else None,      
             "description": self.description,
             "location":self.location,
             "publishing_date": self.publishing_date,

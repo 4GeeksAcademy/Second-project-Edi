@@ -89,7 +89,7 @@ def upload_item():
         }
         return jsonify(response_body),400
     
-    required_fields = ["title", "description", "publishing_date", "image", "type"]
+    required_fields = ["title", "description", "publishing_date", "image"]
     for field in required_fields:
         if field not in data:
             response_body = {
