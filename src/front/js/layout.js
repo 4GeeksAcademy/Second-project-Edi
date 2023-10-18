@@ -16,6 +16,7 @@ import TopBar from "./component/topbar";
 import Colchones from "./pages/colchones";
 import Canapes from "./pages/canapes";
 import Cabeceros from "./pages/cabeceros";
+import CarritoPage from "./pages/carritopage";
 
 //create your first component
 const Layout = () => {
@@ -40,6 +41,7 @@ const Layout = () => {
                         <Route element={<Cabeceros />} path="/cabeceros" />
                         <Route element={<Canapes />} path="/canapes" />
                         <Route element={<Colchones />} path="/colchones" />
+                        <Route element={<CarritoPage />} path="/carrito" />
                         <Route element={<SingleItem/>} path="/single-item/:id"/>
                         <Route element={<h1>Not found!</h1>} path="*"/>
                     </Routes>

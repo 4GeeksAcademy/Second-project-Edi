@@ -1,8 +1,16 @@
 .navbar {
     background-color: rgba(rgba(255, 0, 0, 0.5));
     width: 100%; 
-    z-index: 90; 
+    z-index: 99; 
     position: absolute;  
+}
+.otherNav{
+    display: block;
+    z-index: 0; 
+    position: relative;
+}
+.otherNav a {
+    color: black !important;
 }
 #navbarHome{
     height: 90px;

@@ -51,6 +51,7 @@ const Login = () =>{
           }
         };
 
+
         const create_user = () =>{
             if(email === '') {
                 alert(' Email is empty!')
@@ -68,7 +69,7 @@ const Login = () =>{
                 headers: { 
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({name,password,surname,email,location,image}) 
+                body: JSON.stringify({name,password,surname,email: email.toLowerCase(),location,image}) 
             })
             .then((res) => res.json())
             .then((result) => {  
@@ -104,24 +105,28 @@ const Login = () =>{
 			headers: { 
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({loginEmail,loginPassword }) 
+			body: JSON.stringify({loginEmail: loginEmail.toLowerCase(),loginPassword }) 
 		})
 		.then((res) => res.json())
 		.then((result) => {
-            if (result.msg) {
+            if(result.msg){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: result.msg,
                 });
-            } else {
-               
-                        // localStorage.setItem('jwt-token', result.token);
-                        localStorage.setItem('userId', result.user_id);
-                        localStorage.setItem('username', result.username);
-                        navigate('/');
-                 
-                }
+            }else{
+                Swal.fire({
+                    icon: 'success',
+                    text: result.loginOK,
+                });
+                localStorage.setItem('token', result.token)
+                localStorage.setItem('userId', result.user_id);
+                localStorage.setItem('username', result.username);
+                localStorage.setItem('gmail', result.email);
+
+                navigate('/');
+            }
             })
             .catch((err) => {
                 console.log(err);

@@ -7,7 +7,9 @@ from api.utils import generate_sitemap, APIException
 import bcrypt
 import stripe
 import os 
-
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token
+)
 
 
 api = Blueprint('api', __name__)
@@ -70,10 +72,10 @@ def login():
     stored_password_bytes = bytes.fromhex(stored_password_hex)
 
     if bcrypt.checkpw(password.encode('utf-8'), stored_password_bytes):
-        response_body = {
-            "msg": "Login successful"
-        }
-        return jsonify(response_body), 200
+        logged = "Successfully logged"
+        access_token = create_access_token(identity=user.id)
+
+        return jsonify({"loginOK": logged, "token": access_token, "user_id": user.id, "username": user.name, "email": user.email}),200
     else:
         response_body = {
             "msg": "Invalid password"
@@ -135,3 +137,32 @@ def get_all_items():
     all_items = list(map(lambda x: x.serialize(), all_items))
 
     return jsonify(all_items), 200
+
+
+@api.route('user/<int:id>',methods=['PUT'])
+def update_user(id):
+    data = request.get_json()
+
+    if data is None:
+        response_body={
+            "msg":"body should be passed with request parameters"
+        }
+        return jsonify(response_body),400
+    
+    update_user= User.query.get(id)
+    
+    if "email" in data:
+        update_user.email = data["email"]
+    if "password" in data:
+        update_user.password = data["password"]
+    if "carrito" in data:
+        update_user.carrito = [str(item) for item in data["carrito"]]
+    db.session.commit()
+
+    return jsonify({"msg":"user updated"}),200
+
+
+@api.route('/user/<int:id>',methods=["GET"])
+def get_single_user(id):
+    user = User.query.get(id)
+    return jsonify(user.serialize()), 200

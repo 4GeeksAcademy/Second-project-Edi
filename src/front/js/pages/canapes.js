@@ -31,7 +31,7 @@ const Canapes = () =>{
     const showCanapes = () => {
         return canapes.map((item, index) => {
             return (
-                <div className="col-md-3">
+                <div className="col-md-3" key={index}>
                    <CanapesCard canape={item} single={`/single-item/${item.id}`} />
                 </div>
             );

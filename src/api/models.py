@@ -26,6 +26,8 @@ class User(db.Model):
     surname = db.Column(db.String(40), nullable=False)
     image = db.Column(db.String(300), nullable=False)
     location = db.Column(db.String(40), nullable=False)
+    carrito= db.Column(db.ARRAY(db.String(120)))
+
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -37,7 +39,8 @@ class User(db.Model):
             "name" : self.name ,
             "surname" : self.surname ,
             "image" : self.image ,
-            "location" : self.location 
+            "location" : self.location,
+            "carrito": self.carrito,
         }
     
 class Item(db.Model):
@@ -48,7 +51,7 @@ class Item(db.Model):
     description = db.Column(db.String(1000), nullable=False)
     location = db.Column(db.String(250), nullable=True)
     publishing_date = db.Column(db.String(10), nullable=False)
-    image = db.Column(db.ARRAY(db.String(2000))) 
+    image = db.Column(db.String(2000)) 
     counter = db.Column(db.Integer, nullable=True, default=0)
     price = db.Column(db.Integer, nullable=True, default=0)
     profundidad = db.Column(db.Integer, nullable=True, default=0)
@@ -56,6 +59,7 @@ class Item(db.Model):
     altura = db.Column(db.Integer, nullable=True, default=0)
     grosor = db.Column(db.Integer, nullable=True, default=0)
     firmeza = db.Column(db.Integer, nullable=True, default=0)
+    images = db.relationship("ItemImage", back_populates="item")
 
     def __repr__(self):
         return f'<Reviews {self.id}>'
@@ -78,4 +82,16 @@ class Item(db.Model):
             "firmeza": self.firmeza,
         }
 
+class ItemImage(db.Model):
+    __tablename__ = "itemimage"
+    id = db.Column(db.Integer, primary_key=True)
+    item_id = db.Column(db.Integer, ForeignKey('item.id'))
+    item = db.relationship("Item", back_populates="images")
 
+    def __repr__(self):
+        return f'<ItemImage {self.id}>'
+      
+    def serialize(self):
+       return {
+            "id": self.id,
+        }

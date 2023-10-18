@@ -3,17 +3,25 @@ import "../../styles/mainproducts.css"
 import Carrito from "../component/carrito";
 import ShareComponent from "../component/sharecomponent";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 const SingleItem = (props) =>{
     const params = useParams()
     const [cantidad,setCantidad] = useState(0)
     const [item,setItem] = useState("") 
     const [showCart, setShowCart] = useState(false);
+    const {store,actions} = useContext(Context)
+    const userID = localStorage.getItem('userId')
   
-    const toggleCart = () => {
-      setShowCart(!showCart);
-    };
+    // const toggleCart = () => {
+    //   setShowCart(!showCart);
+    // };
     const [cartItems, setCartItems] = useState([]); 
+
+    useEffect(()=>{
+        actions.getUserCarrito(userID)
+    },[])
 
     const addToCart = (product) => {
       setCartItems([...cartItems, product])
@@ -48,6 +56,10 @@ const SingleItem = (props) =>{
     useEffect(()=>{
         get_single_item()
     },[])
+
+    // useEffect(() => {		
+	// 	actions.getUser(userID)
+	// }, []);
 
     return(
         <div className="container-fluid mt-5 ">
@@ -91,7 +103,8 @@ const SingleItem = (props) =>{
                 </div>
                 <button id="carrito" className="my-3" onClick={() =>{ 
                     addToCart(item);
-                    toggleCart();
+                    actions.añadirAlCarrito(item.id, item.title, item.price, item.image)
+                    actions.añadirCarritoAlUsuario(userID)
                 }}>Añadir al carrito</button>
                     <button  id="comprar">Comprar</button>
                 </div>    

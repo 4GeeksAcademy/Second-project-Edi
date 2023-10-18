@@ -5,6 +5,8 @@ import { Button, Collapse, Card, CardBody } from 'reactstrap';
 
 const Userpage = () =>{
     const [openPanel, setOpenPanel] = useState(null);
+    const name = localStorage.getItem('username')
+    const gmail = localStorage.getItem('gmail')
 
     const togglePanel = (panel) => {
         if (openPanel === panel) {
@@ -30,7 +32,7 @@ const Userpage = () =>{
                 </div>
                 <div id="userInfo" className="col-md-8">
                         <div className="d-flex flex-row justify-content-between">
-                            <h1>Selena Gomez</h1>
+                            <h1>{name}</h1>
                             <div className="d-flex flex-column">
                                 <button className="btn bg-light"> <i class="fa-solid fa-circle-check" style={{color: "#43af41"}}></i> Verified</button>
                                 <div className="d-flex flex-row mt-2">
@@ -41,7 +43,7 @@ const Userpage = () =>{
                             </div>
                             
                         </div>
-                        <h3 className="text-muted"><small>selenagomez@gmail.com</small></h3> 
+                        <h3 className="text-muted"><small>{gmail}</small></h3> 
                         <h4 className="text-muted"><small> Santutxu</small></h4>              
                 </div>
                 <div className="row d-flex aling-items-center justify-content-center">

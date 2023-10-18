@@ -34,8 +34,6 @@ const CanapesCard = (props) =>{
               </section>
             
                 </div>
-          
-         
         </div>
     )
 }
