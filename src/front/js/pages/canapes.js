@@ -8,7 +8,7 @@ const Canapes = () =>{
 
     
     const getCanapes = () =>{
-        fetch(process.env.BACKEND_URL + 'api/items?type=canapes', { 
+        fetch(process.env.BACKEND_URL + 'api/items?category=canapes', { 
             method: "GET", 
             headers: { 
                 "Content-Type": "application/json",

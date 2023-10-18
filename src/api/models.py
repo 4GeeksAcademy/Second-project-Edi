@@ -4,15 +4,11 @@ import enum
 from sqlalchemy import Enum,ForeignKey,Float
 from datetime import datetime
 
-
-
-
 class myEnum(enum.Enum):
     colchones = "colchones"
     canapes = "canapes"
     cabeceros = "cabeceros"
-    sofas = "sofas"
-    armarios = "armarios"
+ 
 
 
 db = SQLAlchemy()
@@ -47,11 +43,11 @@ class Item(db.Model):
     __tablename__ = "item"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
-    type = db.Column(Enum(myEnum))  
+    category = db.Column(Enum(myEnum))
     description = db.Column(db.String(1000), nullable=False)
     location = db.Column(db.String(250), nullable=True)
     publishing_date = db.Column(db.String(10), nullable=False)
-    image = db.Column(db.String(2000)) 
+    image = db.Column(db.String(2000),nullable=True) 
     counter = db.Column(db.Integer, nullable=True, default=0)
     price = db.Column(db.Integer, nullable=True, default=0)
     profundidad = db.Column(db.Integer, nullable=True, default=0)
@@ -59,16 +55,15 @@ class Item(db.Model):
     altura = db.Column(db.Integer, nullable=True, default=0)
     grosor = db.Column(db.Integer, nullable=True, default=0)
     firmeza = db.Column(db.Integer, nullable=True, default=0)
-    images = db.relationship("ItemImage", back_populates="item")
 
     def __repr__(self):
-        return f'<Reviews {self.id}>'
+        return f'<Item {self.id}>'
       
     def serialize(self):
        return {
             "id": self.id,
             "title": self.title,
-            "type": self.type.name if self.type else None,      
+            "category": self.category.name if self.category else None,
             "description": self.description,
             "location":self.location,
             "publishing_date": self.publishing_date,
@@ -80,18 +75,4 @@ class Item(db.Model):
             "altura": self.altura,
             "grosor": self.grosor, 
             "firmeza": self.firmeza,
-        }
-
-class ItemImage(db.Model):
-    __tablename__ = "itemimage"
-    id = db.Column(db.Integer, primary_key=True)
-    item_id = db.Column(db.Integer, ForeignKey('item.id'))
-    item = db.relationship("Item", back_populates="images")
-
-    def __repr__(self):
-        return f'<ItemImage {self.id}>'
-      
-    def serialize(self):
-       return {
-            "id": self.id,
         }

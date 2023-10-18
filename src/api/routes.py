@@ -82,27 +82,27 @@ def login():
         }
         return jsonify(response_body), 400
 
-@api.route('/upload-item', methods=['POST'])
-def upload_item():
-    data = request.get_json()
-    if data is None:
-        response_body = {
-            "msg" : "Body should be passed with request"
-        }
-        return jsonify(response_body),400
+# @api.route('/upload-item', methods=['POST'])
+# def upload_item():
+#     data = request.get_json()
+#     if data is None:
+#         response_body = {
+#             "msg" : "Body should be passed with request"
+#         }
+#         return jsonify(response_body),400
     
-    required_fields = ["title", "description", "publishing_date", "image", "type"]
-    for field in required_fields:
-        if field not in data:
-            response_body = {
-                "msg": f"{field.capitalize()} should be in request"
-            }
-            return jsonify(response_body), 400
+#     required_fields = ["title", "description", "publishing_date", "image", "category"]
+#     for field in required_fields:
+#         if field not in data:
+#             response_body = {
+#                 "msg": f"{field.capitalize()} should be in request"
+#             }
+#             return jsonify(response_body), 400
         
-    new_item= Item(title = data["title"], description=data["description"], type=data["type"], publishing_date=data["publishing_date"], image=data["image"])
-    db.session.add(new_item)   
-    db.session.commit()
-    return jsonify({"msg": "Item has been added"}),200
+#     new_item= Item(title = data["title"], description=data["description"], category=data["category"], publishing_date=data["publishing_date"], image=data["image"])
+#     db.session.add(new_item)   
+#     db.session.commit()
+#     return jsonify({"msg": "Item has been added"}),200
 
 
 @api.route('/payment-stripe', methods=['POST'])
@@ -132,8 +132,8 @@ def get_single_item(id):
 
 @api.route('/items', methods=['GET'])
 def get_all_items():
-    type = request.args.get("type")
-    all_items = Item.query.filter_by(type=type)
+    category = request.args.get("category")
+    all_items = Item.query.filter_by(category=category)
     all_items = list(map(lambda x: x.serialize(), all_items))
 
     return jsonify(all_items), 200

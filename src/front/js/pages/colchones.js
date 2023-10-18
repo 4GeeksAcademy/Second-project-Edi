@@ -3,7 +3,7 @@ import React,{useEffect} from "react";
 
 const Colchones = () =>{
     const getColchones = () =>{
-        fetch(process.env.BACKEND_URL + 'api/items?type=colchones', { 
+        fetch(process.env.BACKEND_URL + 'api/items?category=colchones', { 
             method: "GET", 
             headers: { 
                 "Content-Type": "application/json",

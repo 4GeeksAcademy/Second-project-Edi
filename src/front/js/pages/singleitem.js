@@ -45,6 +45,7 @@ const SingleItem = (props) =>{
         })
         .then((res) => res.json())
         .then((result) => {  
+            console.log(result);
             setItem(result)
         })
         .catch((err) => {
@@ -75,16 +76,11 @@ const SingleItem = (props) =>{
                     <p><i class="fa-solid fa-arrow-left me-3"></i> 30 dias para devolución</p>
                     <p><i class="fa-solid fa-lock me-3"></i> 1 año de garantía</p>
 
-                    <select className="form-select" id="tamañoCamaSelec" aria-label="Tamaño de cama">
-                        <option selected>Selecciona tamaño</option>
-                        <option value="1">Cama de </option>
-                        <option value="2">Cama de </option>
-                        <option value="3">Cama de </option>
-                    </select>
+                  
                 
                     <section className="d-flex flex-row justify-content-between">
                         <div className="quantityBoard d-flex flex-row align-items-center mt-3">
-                            <input id="quantity" value={cantidad} /> 
+                            {/* <input id="quantity" value={cantidad} />  */}
                             <div className="d-flex flex-column ">
                                 <button className="btnCantidad"><i class="fa-solid fa-angle-up" onClick={sumarCantidad}></i></button>
                                 <button className="btnCantidad"><i class="fa-solid fa-angle-down" onClick={restarCantidad}></i></button>

@@ -53,14 +53,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.then(data=> {
 					console.log(data);
-					const store = getStore();
-					const jsonCarrito = data.carrito.map(item => {
-						const validString = item.replace(/'/g, '"')
-						console.log(validString);
+					// const store = getStore();
+					// const jsonCarrito = data.carrito.map(item => {
+					// 	const validString = item.replace(/'/g, '"')
+					// 	console.log(validString);
 
-						return JSON.parse(validString)
-					})
-					setStore({ ...store, carrito: jsonCarrito });
+					// 	return JSON.parse(validString)
+					// })
+					// setStore({ ...store, carrito: jsonCarrito });
 				})
 				.catch(error => {			
 					console.log('Oops something went wrong'+ error);
