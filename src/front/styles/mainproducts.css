@@ -33,9 +33,6 @@
 .fa-car, .fa-arrow-left, .fa-lock {
     font-size: 20px;
 }
-.app {
-    display: flex;
-}
 
 #tamañoCamaSelec{
     border: none;

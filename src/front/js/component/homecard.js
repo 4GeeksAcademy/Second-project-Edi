@@ -18,7 +18,7 @@ const HomeCard = (props) => {
             <div id="titleCard" className="col-md-8   d-flex align-items-center justify-content-center">
               <h4 className="text-center">{props.title}</h4>
             </div>
-            <div className="p-2 ">
+            <div className="p-2 text-center">
               <p>{props.description}</p>
             </div>
             

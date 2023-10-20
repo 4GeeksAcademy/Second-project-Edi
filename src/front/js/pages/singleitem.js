@@ -9,7 +9,7 @@ import { Context } from "../store/appContext";
 const SingleItem = (props) =>{
     const params = useParams()
     const [cantidad,setCantidad] = useState(0)
-    const [item,setItem] = useState("") 
+    const [item,setItem] = useState({}) 
     const [showCart, setShowCart] = useState(false);
     const {store,actions} = useContext(Context)
     const userID = localStorage.getItem('userId')
@@ -17,15 +17,7 @@ const SingleItem = (props) =>{
     // const toggleCart = () => {
     //   setShowCart(!showCart);
     // };
-    const [cartItems, setCartItems] = useState([]); 
 
-    useEffect(()=>{
-        actions.getUserCarrito(userID)
-    },[])
-
-    const addToCart = (product) => {
-      setCartItems([...cartItems, product])
-    };
 
     const sumarCantidad = () =>{
         setCantidad(cantidad + 1)
@@ -58,9 +50,6 @@ const SingleItem = (props) =>{
         get_single_item()
     },[])
 
-    // useEffect(() => {		
-	// 	actions.getUser(userID)
-	// }, []);
 
     return(
         <div className="container-fluid mt-5 ">
@@ -91,14 +80,8 @@ const SingleItem = (props) =>{
                   
                   
 
-                 
-                    <div className="app">                      
-                {showCart && (
-                        <Carrito cartItems={cartItems} /> 
-                    )}
-                </div>
+            
                 <button id="carrito" className="my-3" onClick={() =>{ 
-                    addToCart(item);
                     actions.añadirAlCarrito(item.id, item.title, item.price, item.image)
                     actions.añadirCarritoAlUsuario(userID)
                 }}>Añadir al carrito</button>

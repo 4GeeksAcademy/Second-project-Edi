@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -12,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			añadirAlCarrito: (itemId, itemTitle, itemPrice, itemImage) =>{
 				const store = getStore();
 				if (!store.carrito.some(producto => producto.id == itemId) && store.carrito !== null) {
-					setStore({ carrito: [...store.carrito, {id: itemId, title: itemTitle, price: itemPrice, image : itemImage}] });
+					const updatedCarrito = [...store.carrito, { id: itemId, title: itemTitle, price: itemPrice, image: itemImage }];
+                    setStore({ carrito: updatedCarrito });
 				} else {
 					Swal.fire("Ya existe en el carrito!!")
 				}	
@@ -53,14 +55,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.then(data=> {
 					console.log(data);
-					// const store = getStore();
-					// const jsonCarrito = data.carrito.map(item => {
-					// 	const validString = item.replace(/'/g, '"')
-					// 	console.log(validString);
+					const store = getStore()
 
-					// 	return JSON.parse(validString)
-					// })
-					// setStore({ ...store, carrito: jsonCarrito });
+					const jsonCarrito = data.carrito.map(item => {
+						const validString = item.replace(/'/g, '"')
+						console.log(validString);
+
+						return JSON.parse(validString)
+					})
+					setStore({ ...store, carrito:jsonCarrito });
 				})
 				.catch(error => {			
 					console.log('Oops something went wrong'+ error);

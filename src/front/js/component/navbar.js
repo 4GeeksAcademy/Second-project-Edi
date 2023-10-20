@@ -17,6 +17,11 @@ export const Navbar = () => {
 		setShowCart(!showCart);
 	  };
 
+	useEffect(()=>{
+        actions.getUserCarrito(localStorage.getItem("userId"))
+    },[])
+
+
 	const logOut = () => {
 		localStorage.removeItem('token');
 		localStorage.removeItem('userId')
@@ -30,13 +35,6 @@ export const Navbar = () => {
 
 	const navigate = useNavigate()
 	const isHome = window.location.pathname === '/';
-
-	useEffect(()=>{
-		
-		console.log(store.carrito);
-
-	},[actions.getUserCarrito(localStorage.getItem('userId'))])
-
 
 	return (
 		<nav className={`navbar navbar-expand-lg ${isHome ? 'navbar' : 'otherNav'}`} >

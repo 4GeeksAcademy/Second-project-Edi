@@ -22,7 +22,7 @@ class User(db.Model):
     surname = db.Column(db.String(40), nullable=False)
     image = db.Column(db.String(300), nullable=False)
     location = db.Column(db.String(40), nullable=False)
-    carrito= db.Column(db.ARRAY(db.String(120)))
+    carrito= db.Column(db.ARRAY(db.String(400)))
 
 
     def __repr__(self):
