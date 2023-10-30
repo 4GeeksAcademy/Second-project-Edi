@@ -17,7 +17,8 @@ import Colchones from "./pages/colchones";
 import Canapes from "./pages/canapes";
 import Cabeceros from "./pages/cabeceros";
 import CarritoPage from "./pages/carritopage";
-
+import Mesas from "./pages/mesas";
+import Armarios from "./pages/armarios";
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -41,6 +42,8 @@ const Layout = () => {
                         <Route element={<Cabeceros />} path="/cabeceros" />
                         <Route element={<Canapes />} path="/canapes" />
                         <Route element={<Colchones />} path="/colchones" />
+                        <Route element={<Armarios />} path="/armarios" />
+                        <Route element={<Mesas />} path="/mesas" />
                         <Route element={<CarritoPage />} path="/carrito" />
                         <Route element={<SingleItem/>} path="/single-item/:id"/>
                         <Route element={<h1>Not found!</h1>} path="*"/>

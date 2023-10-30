@@ -8,7 +8,10 @@ class myEnum(enum.Enum):
     colchones = "colchones"
     canapes = "canapes"
     cabeceros = "cabeceros"
- 
+    armarios = "armarios"
+    sofas = "sofas"
+    mesas = "mesas"
+    sillas = "sillas"
 
 
 db = SQLAlchemy()
@@ -55,6 +58,10 @@ class Item(db.Model):
     altura = db.Column(db.Integer, nullable=True, default=0)
     grosor = db.Column(db.Integer, nullable=True, default=0)
     firmeza = db.Column(db.Integer, nullable=True, default=0)
+    color = db.Column(db.String, nullable=True)
+    ancho = db.Column(db.Integer, nullable=True, default=0)
+    longitud = db.Column(db.Integer, nullable=True, default=0)
+    codigo = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return f'<Item {self.id}>'
@@ -75,4 +82,9 @@ class Item(db.Model):
             "altura": self.altura,
             "grosor": self.grosor, 
             "firmeza": self.firmeza,
-        }
+            "color" : self.color,
+            "ancho" : self.ancho,
+            "longitud" : self.longitud,
+            "codigo" : self.codigo
+
+    }

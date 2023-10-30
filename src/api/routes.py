@@ -91,7 +91,7 @@ def upload_item():
         }
         return jsonify(response_body),400
     
-    required_fields = ["title", "description", "publishing_date", "image", "category", "price"]
+    required_fields = ["title", "description", "publishing_date", "image", "category", "price","color"]
     for field in required_fields:
         if field not in data:
             response_body = {
@@ -99,7 +99,7 @@ def upload_item():
             }
             return jsonify(response_body), 400
         
-    new_item= Item(title = data["title"], description=data["description"], price=data["price"], category=data["category"], publishing_date=data["publishing_date"], image=data["image"])
+    new_item= Item(title = data["title"], description=data["description"], price=data["price"], category=data["category"], color=data["color"], publishing_date=data["publishing_date"], image=data["image"], altura=data["altura"], profundidad=data["profundidad"],longitud=data["longitud"],codigo=data["codigo"])
     db.session.add(new_item)   
     db.session.commit()
     return jsonify({"msg": "Item has been added"}),200
@@ -166,3 +166,13 @@ def update_user(id):
 def get_single_user(id):
     user = User.query.get(id)
     return jsonify(user.serialize()), 200
+
+
+@api.route('/search',methods=["GET"])
+def handle_search():
+    search_query = request.args.get('query') 
+    results = Item.query.filter(Item.title.like(f'%{search_query}%')).all()
+
+    serialized_results = [{'id': item.id, 'name': item.title} for item in results]
+
+    return jsonify({'results': serialized_results})

@@ -1,7 +1,9 @@
 import React from "react";
 import "../../styles/carouselhome.css"
+import { useNavigate } from "react-router-dom";
 
 const CarouselHome = () =>{
+  const navigate = useNavigate()
     return(
       <div className="carousel-container">
 
@@ -23,7 +25,7 @@ const CarouselHome = () =>{
           </div>
           <p id="description1"> Comodidad y satisfacción <br/> garantizadas."</p>
         </div>
-        <button className=" btnComprar">Comprar</button>
+        <button className=" btnComprar"  onClick={()=>navigate("/sofas")}>Comprar</button>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
@@ -37,7 +39,7 @@ const CarouselHome = () =>{
           </div>
           <p id="description1"> Comodidad y satisfacción <br/> garantizadas."</p>
         </div>
-        <button className=" btnComprar">Comprar</button>
+        <button className="btnComprar" onClick={()=>navigate("/canapes")}>Comprar</button>
       </div>
     </div>
     <div class="carousel-item">
@@ -51,7 +53,7 @@ const CarouselHome = () =>{
           </div>
           <p id="description1"> Comodidad y satisfacción <br/> garantizadas."</p>
         </div>
-        <button className=" btnComprar">Comprar</button>
+        <button className=" btnComprar" onClick={()=>navigate("/colchones")}>Comprar</button>
       </div>
     </div>
   </div>

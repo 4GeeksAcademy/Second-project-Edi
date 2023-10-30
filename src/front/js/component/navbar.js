@@ -10,17 +10,23 @@ import { Context } from "../store/appContext";
 
 
 export const Navbar = () => {
+
+	const [searchQuery, setSearchQuery] = useState('');
 	const token = localStorage.getItem("token")
 	const {store,actions} = useContext(Context)
-	const [showCart, setShowCart] = useState(false);
-	const toggleCart = () => {
-		setShowCart(!showCart);
-	  };
+	const [searchResults, setSearchResults] = useState([]);
+	const navigate = useNavigate()
+	const isHome = window.location.pathname === '/';
+
+
+	const handleSearch = (e) => {
+	  e.preventDefault();
+	  realizarBusqueda(searchQuery);
+	};
 
 	useEffect(()=>{
         actions.getUserCarrito(localStorage.getItem("userId"))
     },[])
-
 
 	const logOut = () => {
 		localStorage.removeItem('token');
@@ -33,8 +39,23 @@ export const Navbar = () => {
     	})
 	}
 
-	const navigate = useNavigate()
-	const isHome = window.location.pathname === '/';
+	const realizarBusqueda = async (query) => {
+		try {
+			fetch(`${process.env.BACKEND_URL}/api/search?query=${query}`, { 
+                method: "GET", 
+                headers: { 
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((res) => res.json())
+            .then((result) => {  
+				setSearchResults(result.results)
+                console.log(result.results);
+            })
+	  		} catch (error) {
+		  console.error('Error al realizar la búsqueda:', error);
+		}
+	  };
 
 	return (
 		<nav className={`navbar navbar-expand-lg ${isHome ? 'navbar' : 'otherNav'}`} >
@@ -73,13 +94,38 @@ export const Navbar = () => {
 						</>
 					)}
 					
-					<Dropdown name ={"Dormitorio"} item1="Canapes" item2="Mesilla de noche" item3="Cabezeros" />
-					<Dropdown name ={"Salon"} item1="Sofa" item2="Armario" item3="Mesas"/>
+					<Dropdown name ={"Dormitorio"} item1="Canapes"  link="/canapes" link2="/colchones" link3="/cabeceros" item2="Colchones" item3="Cabezeros" />
+					<Dropdown name ={"Salon"} item1="Sofa" item2="Armario" item3="Mesas"  link="/sofas" link2="/armarios" link3="/mesas" />
 				</ul>
-				<form className="d-flex">
-					<input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-					<button className="btn btn-outline-success" type="submit">Search</button>
-				</form>
+					<form className="d-flex" onSubmit={handleSearch}>
+						<input
+							className="form-control me-2"
+							type="search"
+							placeholder="Buscar"
+							aria-label="Search"
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+						/>
+						<button className="btn btn-outline-success" type="submit">
+							Buscar
+						</button>
+					</form>
+					{searchResults.length > 0 && (
+        <div>
+         
+          {searchResults.map((result, index) => {
+				return (
+					// <li key={index}>
+					// <a className="dropdown-item" href="#">
+					// 	{result.name}
+					// </a>
+					// </li>
+					alert(result.name)
+				);
+				})}
+    
+        </div>
+      )}
 				</div>
 			</div>
 		</nav>

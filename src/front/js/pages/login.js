@@ -139,13 +139,13 @@ const Login = () =>{
                     <div className={showLogin ? "col-md-4 p-0" : "col-md-4 p-0"}>
                         {showLogin ? (
                             <div className="half-content d-flex text-center  justify-content-center flex-column">
-                                <h3>Welcome!</h3>
-                                <p>Sing in to find your next toy</p>
+                                <h3>BIENVENIDO!</h3>
+                                <p>Descubre el confort perfecto. Encuentra tu próximo mueble con nosotros</p>
                             </div>
                         ) : (
                             <div className="half-content d-flex text-center  justify-content-center flex-column">
-                                <h1>2nd Life</h1>
-                                <p>Trade, Share, Renew <br/> Your Unwanted Treasures Find New Adventures Here</p>                                
+                                <h1>Da vida a tu espacio</h1>
+                                <p>Crea una cuenta y comienza a <br/>diseñar tu hogar perfecto hoy mismo</p>                                
                             </div>
                         )}
                     </div>

@@ -13,9 +13,7 @@
     object-fit: cover;
 }
 #canapeTitle{
-    transform: translateY(-25%);
     background-color: white;
-    height: 60px;
     display: flex;
     justify-content: center;
 }

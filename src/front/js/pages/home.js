@@ -37,8 +37,8 @@ export const Home = () => {
 	},[])
 
 	const handleClick = () => {
-		const phoneNumber = "34654580067";
-		const message = "¡Hola! estas muy guapa "; 
+		const phoneNumber = "34612273700";
+		const message = "¡Hola! Me gustaria más información"; 
 		const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
 		  message
 		)}`;

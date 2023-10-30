@@ -4,6 +4,10 @@
     z-index: 99; 
     position: absolute;  
 }
+#pedo{
+    z-index: 999; 
+
+}
 .otherNav{
     display: block;
     z-index: 0; 

@@ -6,7 +6,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			carrito: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
@@ -54,9 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return resp.json();
 				})
 				.then(data=> {
-					console.log(data);
 					const store = getStore()
-
 					const jsonCarrito = data.carrito.map(item => {
 						const validString = item.replace(/'/g, '"')
 						console.log(validString);

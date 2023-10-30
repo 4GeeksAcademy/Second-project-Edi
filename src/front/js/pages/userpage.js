@@ -56,13 +56,13 @@ const Userpage = () =>{
                                     </Button>
                                 </div>
                                 <div className="col-md-3">
-                                    <Button color="secondary"  className="col-md-12" onClick={() => togglePanel('Exchange')}>
-                                        Exchange
+                                    <Button color="secondary"  className="col-md-12" onClick={() => togglePanel('Carrito')}>
+                                        Carrito
                                     </Button>
                                 </div>
                                 <div className="col-md-3">
-                                    <Button color="secondary" className="col-md-12" onClick={() => togglePanel('Favorites')}>
-                                        Favorites
+                                    <Button color="secondary" className="col-md-12" onClick={() => togglePanel('Compras')}>
+                                        Compras
                                     </Button>
                                 </div>
                                 <div className="col-md-3  pe-0">
@@ -89,14 +89,14 @@ const Userpage = () =>{
                             </Card>
                         </Collapse>
 
-                        <Collapse isOpen={openPanel === 'Favorites'}>
+                        <Collapse isOpen={openPanel === 'Carrito'}>
                             <Card>
                             <CardBody>
                                 Some placeholder content for the 'Favorites' panel.
                             </CardBody>
                             </Card>
                         </Collapse>
-                        <Collapse isOpen={openPanel === 'Exchange'}>
+                        <Collapse isOpen={openPanel === 'Compras'}>
                             <Card>
                             <CardBody>
                                 Some placeholder content for the 'Favorites' panel.
